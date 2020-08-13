@@ -28,6 +28,37 @@ tags:
 
 paths:
   /license:
+    get:
+      tags:
+        - license
+      summary: Get the status of a license.
+      operationId: licenseStatus
+      parameters:
+        - name: license_key
+          description: Unique license key.
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/LicenseKey'
+      security:
+        - partner_token: []
+      responses:
+        '200':
+          description: OK. Response body contains the license.
+          headers:
+            Request-Id:
+              $ref: '#/components/headers/Request-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+        '403':
+          $ref: '#/components/responses/InvalidRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '509':
+          $ref: '#/components/responses/RateLimited'
+
     post:
       tags:
         - license
@@ -66,44 +97,18 @@ paths:
         '403':
           $ref: '#/components/responses/InvalidRequest'
 
-  /license/{license_id}:
-    parameters:
-      - name: license_id
-        description: Unique license id.
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/LicenseId'
-
-    get:
-      tags:
-        - license
-      summary: Get the status of a license.
-      operationId: licenseStatus
-      security:
-        - partner_token: []
-      responses:
-        '200':
-          description: OK. Response body contains the license.
-          headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/License'
-        '403':
-          $ref: '#/components/responses/InvalidRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '509':
-          $ref: '#/components/responses/RateLimited'
-
     delete:
       tags:
         - license
       summary: Revoke a license permanently.
       operationId: revokeLicense
+      parameters:
+        - name: license_key
+          description: Unique license key.
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/LicenseKey'
       security:
         - partner_token: []
       responses:
@@ -121,19 +126,19 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /license/{license_id}/site:
+  /license/site:
     parameters:
-      - name: license_id
-        description: Unique license id.
-        in: path
+      - name: license_key
+        description: Unique license key.
+        in: query
         required: true
         schema:
-          $ref: '#/components/schemas/LicenseId'
+          $ref: '#/components/schemas/LicenseKey'
 
     get:
       tags:
         - license
-      summary: Get the status of site associated with a license.
+      summary: Get the site a license is being used on.
       operationId: licenseSiteStatus
       security:
         - partner_token: []
@@ -155,7 +160,7 @@ paths:
     put:
       tags:
         - license
-      summary: Update the site associated with a license.
+      summary: Update the site a license is being used on.
       operationId: updateLicenseSite
       security:
         - partner_token: []
@@ -225,10 +230,6 @@ components:
     Site:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
         url:
           $ref: '#/components/schemas/SiteUrl'
     SiteUrl:
