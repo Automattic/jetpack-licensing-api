@@ -1,26 +1,17 @@
-# TODO: remove automocking server.
-# TODO: update externalDocs.
 # TODO: update contact email
-# TODO: update the jetpack security component to reflect how the plugin will authenticate requests to this API.
 
 openapi: 3.0.0
 
 info:
   description: |
-    This is the Jetpack Start Licensing API.
-  version: "1.0.0"
-  title: Jetpack Start Licensing API
-  termsOfService: 'http://example.org/'
+    This is the Jetpack Licensing API.
+  version: "0.9.0"
+  title: Jetpack Licensing API
   contact:
     email: atanas.angelov@automattic.com
   license:
     name: GPL 2.0
     url: 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html'
-
-servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/atanas-dev-org/licensing/1.0.0
-  - url: 'https://petstore.swagger.io/v2'
 
 tags:
   - name: license
@@ -164,7 +155,6 @@ paths:
       operationId: updateLicenseSite
       security:
         - partner_token: []
-        - jetpack: []
       requestBody:
         content:
           application/json:
@@ -189,8 +179,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 
 externalDocs:
-  description: API documentation for host partners.
-  url: 'https://github.com/Automattic/host-partner-documentation'
+  description: Learn more about integrating with this API.
+  url: https://github.com/Automattic/jetpack-licensing-api/integration-docs/
 
 components:
   schemas:
@@ -278,9 +268,4 @@ components:
     partner_token:
       type: http
       description: Generate a bearer token via https://public-api.wordpress.com/oauth2/token
-      scheme: bearer
-
-    jetpack:
-      type: http
-      description: TODO this authentication method depends on how Jetpack the plugin can make authenticated requests to this API.
       scheme: bearer
