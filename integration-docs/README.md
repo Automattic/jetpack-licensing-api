@@ -11,7 +11,7 @@
 
 - **Issue a license**: To create a new license record. After issuing, a license is ready to be used (attached, revoked, inspected, etc).
 - **Revoke a license**: To make it so that an issued license cannot be used ever again regardless of whether it was attached to a site or not. Once a license is revoked it cannot be attached again and the provisioned product is removed from the Jetpack site.
-- **Set/unset a license**: To set the jetpack_license option containing a license key string on a WordPress instance using `update_option()`. This process offers no guarantees that the license is valid until it is actually attached.
+- **Set/unset a license**: To set the `jetpack_licenses` option containing a license key string on a WordPress instance using `update_option()`. This process offers no guarantees that the license is valid until it is actually attached.
 - **Attach a license**: A license is associated to a user and site. From that point onwards the license belongs to the user that first connected jetpack on the site and is linked to that site.
 - **Detach a license**: The process of unlinking an attached license from a specific site (the owner user remains the same). This should be done in order to be able to attach a license to a site other than the one it was previously attached to.
 - **Inspect a license**: Become aware of a license’s capabilities, validity, specs, etc.
@@ -54,9 +54,9 @@ The response will be a JSON object of the newly generated license that looks som
 ```
 During normal usage you will only need to store the `license_key` value for the next step.
 
-### 3. Attach one or more licenses to a site
+### 3. Set one or more licenses on a site
 
-To attach one or more licenses to a site you need to store their license keys as an array in the WordPress `jetpack_licenses` option:
+To set one or more licenses on a site you need to store their license keys as an array in the WordPress `jetpack_licenses` option:
 ```php
 update_option(
     'jetpack_licenses',
