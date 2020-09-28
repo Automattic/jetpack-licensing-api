@@ -1,11 +1,9 @@
-# TODO: update contact email
-
 openapi: 3.0.0
 
 info:
   description: |
     This is the Jetpack Licensing API.
-  version: "0.9.0"
+  version: 1.0.0
   title: Jetpack Licensing API
   contact:
     email: atanas.angelov@automattic.com
@@ -37,18 +35,14 @@ paths:
         '200':
           description: OK. Response body contains the license.
           headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
         '403':
           $ref: '#/components/responses/InvalidRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '509':
-          $ref: '#/components/responses/RateLimited'
 
     post:
       tags:
@@ -79,8 +73,8 @@ paths:
         '200':
           description: OK. Response body contains the newly issued license.
           headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
           content:
             application/json:
               schema:
@@ -106,77 +100,14 @@ paths:
         '200':
           description: OK. Response body contains the license that was revoked.
           headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
         '403':
           $ref: '#/components/responses/InvalidRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-
-  /license/site:
-    parameters:
-      - name: license_key
-        description: Unique license key.
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/LicenseKey'
-
-    get:
-      tags:
-        - license
-      summary: Get the site a license is being used on.
-      operationId: licenseSiteStatus
-      security:
-        - partner_token: []
-      responses:
-        '200':
-          description: OK. Response body contains the license site.
-          headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Site'
-        '403':
-          $ref: '#/components/responses/InvalidRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-
-    put:
-      tags:
-        - license
-      summary: Update the site a license is being used on.
-      operationId: updateLicenseSite
-      security:
-        - partner_token: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  $ref: '#/components/schemas/SiteUrl'
-      responses:
-        '200':
-          description: OK. Response body contains the updated license site.
-          headers:
-            Request-Id:
-              $ref: '#/components/headers/Request-Id'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Site'
-        '403':
-          $ref: '#/components/responses/InvalidRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
 
 externalDocs:
   description: Learn more about integrating with this API.
@@ -217,17 +148,8 @@ components:
       type: string
       example: 'TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQu'
 
-    Site:
-      type: object
-      properties:
-        url:
-          $ref: '#/components/schemas/SiteUrl'
-    SiteUrl:
-      type: string
-      example: 'http://example.org/'
-
   headers:
-    Request-Id:
+    X-Jetpack-Request-Id:
       description: Unique request id.
       schema:
         type: string
@@ -241,8 +163,8 @@ components:
           schema:
             $ref: '#/components/schemas/Message'
       headers:
-        Request-Id:
-          $ref: '#/components/headers/Request-Id'
+        X-Jetpack-Request-Id:
+          $ref: '#/components/headers/X-Jetpack-Request-Id'
 
     InvalidRequest:
       description: Invalid input or insufficient permissions.
@@ -251,8 +173,8 @@ components:
           schema:
             $ref: '#/components/schemas/Message'
       headers:
-        Request-Id:
-          $ref: '#/components/headers/Request-Id'
+        X-Jetpack-Request-Id:
+          $ref: '#/components/headers/X-Jetpack-Request-Id'
 
     RateLimited:
       description: Bandwidth Limit Exceeded.
@@ -261,8 +183,8 @@ components:
           schema:
             $ref: '#/components/schemas/Message'
       headers:
-        Request-Id:
-          $ref: '#/components/headers/Request-Id'
+        X-Jetpack-Request-Id:
+          $ref: '#/components/headers/X-Jetpack-Request-Id'
 
   securitySchemes:
     partner_token:
