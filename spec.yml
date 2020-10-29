@@ -185,7 +185,6 @@ components:
           type: string
           example: "jetpack-backup-daily"
 
-
     LicenseId:
       type: integer
       format: int64
