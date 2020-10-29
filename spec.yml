@@ -15,6 +15,10 @@ tags:
   - name: license
     description: Everything regarding licenses.
 
+servers:
+  - url: https://public-api.wordpress.com/wpcom/v2/jetpack-licensing/
+    description: WordPress API
+
 paths:
   /license:
     get:
@@ -30,7 +34,7 @@ paths:
           schema:
             $ref: '#/components/schemas/LicenseKey'
       security:
-        - partner_token: []
+        - ApiKeyAuth: []
       responses:
         '200':
           description: OK. Response body contains the license.
@@ -49,8 +53,6 @@ paths:
         - license
       summary: Issue a new license.
       operationId: issueLicense
-      security:
-        - partner_token: []
       requestBody:
         content:
           application/json:
@@ -69,6 +71,8 @@ paths:
                     - 'jetpack-backup-realtime'
                     - 'jetpack-scan'
                     - 'jetpack-anti-spam'
+      security:
+        - ApiKeyAuth: []
       responses:
         '200':
           description: OK. Response body contains the newly issued license.
@@ -95,7 +99,7 @@ paths:
           schema:
             $ref: '#/components/schemas/LicenseKey'
       security:
-        - partner_token: []
+        - ApiKeyAuth: []
       responses:
         '200':
           description: OK. Response body contains the license that was revoked.
@@ -115,7 +119,7 @@ paths:
       summary: Get all the available product families and their products.
       operationId: getProductFamilies
       security:
-        - partner_token: []
+        - ApiKeyAuth: []
       responses:
         '200':
           description: OK. Response body contains product families.
@@ -233,7 +237,8 @@ components:
           $ref: '#/components/headers/X-Jetpack-Request-Id'
 
   securitySchemes:
-    partner_token:
-      type: http
-      description: Generate a bearer token via https://public-api.wordpress.com/oauth2/token
-      scheme: bearer
+    ApiKeyAuth:
+      name: Authorization
+      type: apiKey
+      in: header
+      description: A token will be provided to you when you register as a partner.
