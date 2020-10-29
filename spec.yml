@@ -108,6 +108,28 @@ paths:
                 $ref: '#/components/schemas/License'
         '403':
           $ref: '#/components/responses/InvalidRequest'
+  /product-families:
+    get:
+      tags:
+        - product-families
+      summary: Get all the available product families and their products.
+      operationId: getProductFamilies
+      security:
+        - partner_token: []
+      responses:
+        '200':
+          description: OK. Response body contains product families.
+          headers:
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductFamily'
+        '403':
+          $ref: '#/components/responses/InvalidRequest'
 
 externalDocs:
   description: Learn more about integrating with this API.
@@ -138,6 +160,31 @@ components:
         revoked_at:
           type: string
           format: date-time
+
+    ProductFamily:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Jetpack Backup"
+        slug:
+          type: string
+          example: "jetpack-backup"
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductFamilyProduct'
+
+    ProductFamilyProduct:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Jetpack Backup (Daily)"
+        slug:
+          type: string
+          example: "jetpack-backup-daily"
+
 
     LicenseId:
       type: integer
