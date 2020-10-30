@@ -17,7 +17,7 @@ tags:
 
 servers:
   - url: https://public-api.wordpress.com/wpcom/v2/jetpack-licensing/
-    description: WordPress API
+    description: WordPress.com API
 
 paths:
   /license:
@@ -238,7 +238,7 @@ components:
 
   securitySchemes:
     ApiKeyAuth:
-      name: Authorization
-      type: apiKey
-      in: header
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
       description: A token will be provided to you when you register as a partner.
