@@ -156,7 +156,7 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/LicenseId'
-        key:
+        license_key:
           $ref: '#/components/schemas/LicenseKey'
         issued_at:
           type: string
