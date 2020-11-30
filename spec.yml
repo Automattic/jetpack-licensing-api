@@ -132,8 +132,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductFamily'
-        '403':
-          $ref: '#/components/responses/InvalidRequest'
   /partners:
     get:
       tags:
