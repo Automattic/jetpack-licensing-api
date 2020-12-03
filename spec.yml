@@ -45,8 +45,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '403':
-          $ref: '#/components/responses/InvalidRequest'
+          $ref: '#/components/responses/Forbidden'
 
     post:
       tags:
@@ -83,8 +85,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '403':
-          $ref: '#/components/responses/InvalidRequest'
+          $ref: '#/components/responses/Forbidden'
 
     delete:
       tags:
@@ -110,8 +114,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '403':
-          $ref: '#/components/responses/InvalidRequest'
+          $ref: '#/components/responses/Forbidden'
   /product-families:
     get:
       tags:
@@ -153,7 +159,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Partner'
         '403':
-          $ref: '#/components/responses/InvalidRequest'
+          $ref: '#/components/responses/Forbidden'
 
 externalDocs:
   description: Learn more about integrating with this API.
@@ -272,8 +278,18 @@ components:
         X-Jetpack-Request-Id:
           $ref: '#/components/headers/X-Jetpack-Request-Id'
 
-    InvalidRequest:
-      description: Invalid input or insufficient permissions.
+    BadRequest:
+      description: Invalid input.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+      headers:
+        X-Jetpack-Request-Id:
+          $ref: '#/components/headers/X-Jetpack-Request-Id'
+
+    Forbidden:
+      description: Insufficient permissions.
       content:
         application/json:
           schema:
