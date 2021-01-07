@@ -29,6 +29,11 @@ As part of the process of becoming a Jetpack Partner you will we given an authen
 
 > Important! You will be given a test token and a production token. Make sure you first try the API with your test token so that you don't get billed for the licenses you issue while testing.
 
+Depending on if you set the "Auto Mock API" on or off when you created the API, you might see one or two servers available for you to use. Make sure you select the one that has `public-api.wordpress.com` in the domain as the other one is SwaggerHub's own mock server.
+
+![SwaggerHub servers combo box](images/swaggerhub_servers.png)
+
+
 That's it! You can now execute any endpoints from the SwaggerHub documentation without having written a single line of code.
 
 ### Postman
