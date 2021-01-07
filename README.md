@@ -1,6 +1,6 @@
 # Jetpack Licensing API
 
-This documentation describes the Jetpack Licensing API and how to get started using it. The API allows hosting partners and agencies to self-manage licenses for Jetpack products. Upon being set on a WordPress site with the [Jetpack plugin installed and connected](https://jetpack.com/support/getting-started-with-jetpack/), these licenses will allow extra functionality according to which license has been set.  
+This documentation describes the Jetpack Licensing API and how to get started using it. The API allows managing licenses for Jetpack products. Upon being set on a WordPress site with the [Jetpack plugin installed and connected](https://jetpack.com/support/getting-started-with-jetpack/), these licenses will allow extra functionality according to which license has been set.  
 
 The documentation is split into two parts: Integration Docs, and the schema definition.
 
