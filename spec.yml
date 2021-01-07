@@ -16,7 +16,7 @@ tags:
     description: Everything regarding licenses.
 
 servers:
-  - url: https://public-api.wordpress.com/wpcom/v2/jetpack-licensing/
+  - url: https://public-api.wordpress.com/wpcom/v2/jetpack-licensing
     description: WordPress.com API
 
 paths:
@@ -124,8 +124,6 @@ paths:
         - product-families
       summary: Get all the available product families and their products.
       operationId: getProductFamilies
-      security:
-        - ApiKeyAuth: []
       responses:
         '200':
           description: OK. Response body contains product families.
