@@ -73,6 +73,9 @@ paths:
                     - 'jetpack-backup-realtime'
                     - 'jetpack-scan'
                     - 'jetpack-anti-spam'
+                    - 'jetpack-security-daily'
+                    - 'jetpack-security-realtime'
+                    - 'jetpack-complete'
       security:
         - ApiKeyAuth: []
       responses:
