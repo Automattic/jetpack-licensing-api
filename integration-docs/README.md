@@ -9,11 +9,11 @@
 
 ## Glossary
 
-- **Issue a license**: To create a new license record. After issuing, a license is ready to be used (attached, revoked, inspected, etc).
-- **Revoke a license**: To make it so that an issued license cannot be used ever again regardless of whether it was attached to a site or not. Once a license is revoked it cannot be attached again and the provisioned product is removed from the Jetpack site.
-- **Set/unset a license**: To set the `jetpack_licenses` option containing a license key string on a WordPress instance using `update_option()`. This process offers no guarantees that the license is valid until it is actually attached.
-- **Attach a license**: A license is associated to a user and site. From that point onwards the license belongs to the user that first connected jetpack on the site and is linked to that site.
-- **Detach a license**: The process of unlinking an attached license from a specific site (the owner user remains the same). This should be done in order to be able to attach a license to a site other than the one it was previously attached to.
+- **Issue a license**: To create a new license record. After issuing, a license is ready to be used (assigned, revoked, inspected, etc).
+- **Revoke a license**: To make it so that an issued license cannot be used ever again regardless of whether it was assigned to a site or not. Once a license is revoked it cannot be assigned again and the provisioned product is removed from the Jetpack site.
+- **Set/unset a license**: To set the `jetpack_licenses` option containing a license key string on a WordPress instance using `update_option()`. This process offers no guarantees that the license is valid until it is actually assigned.
+- **Assign a license**: A license is associated to a user and site. From that point onwards the license belongs to the user that first connected jetpack on the site and is linked to that site.
+- **Unassign a license**: The process of unlinking an assigned license from a specific site (the owner user remains the same). This should be done in order to be able to assign a license to a site other than the one it was previously assigned to.
 - **Inspect a license**: Become aware of a license’s capabilities, validity, specs, etc.
 
 ## Authentication
@@ -72,4 +72,6 @@ wp option update jetpack_licenses '["jetpack-anti-spam_xZjtE12WIVwBus4n2wbIrYcIM
 ```
 _Note: WP CLI usage requires that license keys are formatted as JSON._
 
-Upon updating the license keys, Jetpack will automatically attach them to the site. If Jetpack is not connected, the licenses will be automatically attached whenever the end user connects Jetpack.
+Upon updating the license keys, Jetpack will automatically assign them to the site. If Jetpack is not connected, the licenses will be automatically assigned whenever the end user connects Jetpack.
+
+_Note: While testing the integration, it's crucial to have connected Jetpack on the testing site. You can connect Jetpack either before or after setting the licenses. This step is essential because it's the only way you can check if the license is assigned to your site and everything works as expected. Otherwise, an issue (e.g. a typo in the license or in the WordPress option name) might happen during the process of setting the licenses, and you won't be able to see it until Jetpack is connected._
