@@ -74,4 +74,16 @@ _Note: WP CLI usage requires that license keys are formatted as JSON._
 
 Upon updating the license keys, Jetpack will automatically assign them to the site. If Jetpack is not connected, the licenses will be automatically assigned whenever the end user connects Jetpack.
 
-**_Note: While testing the integration, it's crucial to have connected Jetpack on the testing site. You can connect Jetpack either before or after setting the licenses. This step is essential because it's the only way you can check if the license is assigned to your site and everything works as expected. Otherwise, an issue (e.g. a typo in the license or in the WordPress option name) might happen during the process of setting the licenses, and you won't be able to see it until Jetpack is connected._**
+### 4. Connect Jetpack
+
+Once you've set one or more licenses on a test site, we highly recommend that you connect that site to confirm that the products you have issued licenses for are assigned correctly.
+
+1. If you've set the licenses after connecting Jetpack, skip to step 4. If you've set the licenses before connecting Jetpack continue to step 2.
+2. You will be shown the following Call to Action in your WordPress dashboard:
+![Screenshot 2021-04-15 at 16 40 13](https://user-images.githubusercontent.com/22746396/114878875-5ac9c900-9e09-11eb-92b5-3f0768f5a81d.png)
+3. Click on "Set up Jetpack" and complete the connection process. When you're done, you will be redirected to the Jetpack Dashboard.
+4. Visit `Jetpack -> Dashboard` and click on the `My Plan` tab.
+5. The products you've set licenses for should now show up in the list, for example:
+![Screenshot 2021-04-15 at 16 43 57](https://user-images.githubusercontent.com/22746396/114879361-cad84f00-9e09-11eb-8d24-60e9f750cc0c.png)
+
+By following these steps you will have ensured that you've issued and set the licenses correctly.
