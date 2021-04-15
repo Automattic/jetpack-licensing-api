@@ -86,4 +86,4 @@ Once you've set one or more licenses on a test site, we highly recommend that yo
 5. The products you've set licenses for should now show up in the list, for example:
 ![Screenshot 2021-04-15 at 16 43 57](https://user-images.githubusercontent.com/22746396/114879361-cad84f00-9e09-11eb-8d24-60e9f750cc0c.png)
 
-By following these steps you will have ensured that you've issued and set the licenses correctly.
+By following these steps you will have ensured that you are issuing and setting licenses correctly.
