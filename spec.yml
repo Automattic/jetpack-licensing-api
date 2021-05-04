@@ -166,8 +166,8 @@ paths:
     post:
       tags:
         - site-connection
-      summary: Connects a Jetpack site without requiring a WordPress user (user-less connection).
-      description: The user-less part means that we don't require a WordPress.com account for this connection. We do still need the local WordPress install user. If this endpoint returns 200 then you can safely assume everything worked. This is because if a site has already been connected and this endpoint is called again, the return code will change to reflect this but the status code will always be 200. Multiple calls for the same site are safe and will not have any detrimental effects. This endpoint returns the connected site's blog_id for reference and debugging. While the blog_id is not required for anything else involving a site connection, it is wise to log it somewhere in case you need to contact support.
+      summary: Connects a Jetpack site without requiring a WordPress user.
+      description: With this endpoint we don't require a WordPress.com account to make the connection. We do still need the local WordPress install user. If this endpoint returns 200 then you can safely assume everything worked. This is because if a site has already been connected and this endpoint is called again, the return code will change to reflect this but the status code will always be 200. Multiple calls for the same site are safe and will not have any detrimental effects. This endpoint returns the connected site's blog_id for reference and debugging. While the blog_id is not required for anything else involving a site connection, it is wise to log it somewhere in case you need to contact support.
       operationId: postSiteConnection
       requestBody:
         required: true
