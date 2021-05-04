@@ -162,6 +162,48 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 
+  /site-connection:
+    post:
+      tags:
+        - site-connection
+      summary: Connects a Jetpack site without requiring a WordPress user (user-less connection).
+      description: The user-less part means that we don't require a WordPress.com account for this connection. We do still need the local WordPress install user. If this endpoint returns 200 then you can safely assume everything worked. This is because if a site has already been connected and this endpoint is called again, the return code will change to reflect this but the status code will always be 200. Multiple calls for the same site are safe and will not have any detrimental effects. This endponint returns the connected site's blog_id for reference and debugging. While the blog_id is not required for anything else involiving a site connection, it is wise to log it somewhere in case you need to contact support.
+      operationId: postSiteConnection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  description: The full URL, (including protocol) of the site to connect. If WordPress is installed in a subdirectory then this should be included as part of the URL as well.
+                  type: string
+                  example: https://example.com/site
+                local_user:
+                  description: The ID, login, or email for the WordPress user. A very common case would be a brand new WordPress installation where there is only one admin user. In such cases you can pass 1 for this.
+                  type: integer
+                  example: 1
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK. Response body contains a response code and the newly created blog_id.
+          headers:
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: success
+                  blog_id:
+                    type: integer
+                    example: 123456789
+
 externalDocs:
   description: Learn more about integrating with this API.
   url: https://github.com/Automattic/jetpack-licensing-api/integration-docs/
