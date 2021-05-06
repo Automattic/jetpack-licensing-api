@@ -2,11 +2,11 @@ openapi: 3.0.0
 
 info:
   description: |
-    This is the Jetpack Licensing API.
+    A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
   version: 1.0.0
   title: Jetpack Licensing API
   contact:
-    email: atanas.angelov@automattic.com
+    email: partners@jetpack.com
   license:
     name: GPL 2.0
     url: 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html'
