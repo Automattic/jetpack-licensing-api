@@ -139,26 +139,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductFamily'
-  /partners:
+  /partner:
     get:
       tags:
-        - partners
-      summary: Get all partners and their keys associated with the user making the request. Partner key tokens are to be used for authentication in all other Licensing endpoints.
-      operationId: getPartners
+        - partner
+      summary: Get the partner and its keys associated with the user making the request. Partner key tokens are to be used for authentication in all other Licensing endpoints.
+      operationId: getPartner
       security:
         - WPCOMKeyAuth: []
       responses:
         '200':
-          description: OK. Response body contains partners and their keys.
+          description: OK. Response body contains a partner and its keys.
           headers:
             X-Jetpack-Request-Id:
               $ref: '#/components/headers/X-Jetpack-Request-Id'
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/Partner'
         '403':
           $ref: '#/components/responses/Forbidden'
 
