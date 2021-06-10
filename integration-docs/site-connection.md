@@ -1,5 +1,7 @@
 # Integrating with the Site Connection endpoint
 
+The Site Connection endpoint allows you to establish a Jetpack site-only connection to a given site remotely.
+
 ## Authentication
 
 To interact with the Licensing API, you will need to authenticate your API requests with an access token that will be provided to you.
