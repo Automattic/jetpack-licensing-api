@@ -221,7 +221,7 @@ components:
     License:
       type: object
       properties:
-        id:
+        license_id:
           $ref: '#/components/schemas/LicenseId'
         license_key:
           $ref: '#/components/schemas/LicenseKey'

@@ -50,7 +50,7 @@ echo $LICENSE_JSON
 ```
 The response will be a JSON object of the newly generated license that looks something like this:
 ```json
-{"id":1,"license_key":"jetpack-anti-spam_xZjtE12WIVwBus4n2wbIrYcIM","issued_at":"2020-09-08 16:14:58","revoked_at":null}
+{"license_id":1,"license_key":"jetpack-anti-spam_xZjtE12WIVwBus4n2wbIrYcIM","issued_at":"2020-09-08 16:14:58","revoked_at":null}
 ```
 During normal usage you will only need to store the `license_key` value for the next step.
 
