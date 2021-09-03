@@ -179,8 +179,10 @@ paths:
                   type: string
                   example: https://example.com/site
                 local_user:
-                  description: The ID, login, or email for the WordPress user. A very common case would be a brand new WordPress installation where there is only one admin user. In such cases you can pass 1 for this.
-                  type: integer
+                  description: The ID, login, or email for the WordPress local user (not the WordPress.com user). A very common case would be a brand new WordPress installation where there is only one admin user. In such cases you can pass 1 for this.
+                  oneOf:
+                    - type: integer
+                    - type: string
                   example: 1
       security:
         - ApiKeyAuth: []
