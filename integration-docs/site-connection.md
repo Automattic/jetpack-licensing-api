@@ -33,4 +33,5 @@ echo $RESPONSE
 The response will be one of 3 things:
 - (200) `{"code":"success","blog_id":"BLOG_ID"}` - a new site connection was established for the given blog_id.
 - (200) `{"code":"already_connected","blog_id":"BLOG_ID"}` - the site is already connected and there was no need to do anything.
+- - (200) `{"code":"previously_connected","blog_id":"BLOG_ID"}` - the site was previously connected but is no longer connected. Reconnecting the site will not be attempted due to manual disconnection.
 - (403) `{"code":"ERROR_CODE","message":"ERROR_MESSAGE","data": {...}}` - an error ocurred with a code and message values providing more information.
