@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: |
     A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
-  version: 1.0.0
+  version: 1.1.0
   title: Jetpack Licensing API
   contact:
     email: partners@jetpack.com
@@ -121,6 +121,38 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '403':
           $ref: '#/components/responses/Forbidden'
+
+  /{license_key}/site:
+    delete:
+      tags:
+        - license
+      summary: Detach a license from a site.
+      description: Detaching a license from a site means that it can be applied to the same or a new site again. This can be useful if a site is copied from staging to production and you wish to move the license.
+      operationId: detachLicense
+      parameters:
+        - name: license_key
+          description: Unique license key.
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/LicenseKey'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK. Response body contains the license that was detached.
+          headers:
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
   /product-families:
     get:
       tags:
