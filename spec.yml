@@ -122,7 +122,7 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 
-  /{license_key}/site:
+  /license/{license_key}/site:
     delete:
       tags:
         - license
