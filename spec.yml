@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: |
     A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
-  version: 1.1.0
+  version: 1.2.0
   title: Jetpack Licensing API
   contact:
     email: partners@jetpack.com
@@ -123,6 +123,64 @@ paths:
           $ref: '#/components/responses/Forbidden'
 
   /license/{license_key}/site:
+    post:
+      tags:
+        - license
+      summary: Attach a license to a site.
+      description: Attaching a license to a site means that the site will start benefitting from the Jetpack Product associated with the license.
+      operationId: attachLicense
+      parameters:
+        - name: license_key
+          description: Unique license key.
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/LicenseKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site:
+                  description: The website the license should be attached to.
+                  oneOf:
+                    - type: string
+                    - type: integer
+            examples:
+              siteUrl:
+                summary: Absolute URL
+                description: The absolute URL of a connected Jetpack site.
+                value:
+                  site: https://example.com/subdir/
+              blogId:
+                summary: Blog ID
+                description: The blog ID is a unique identifier for specific sites.
+                value:
+                  site: 1234
+              formattedSiteUrl:
+                summary: Formatted URL
+                description: The site's domain and path where / in the path is replaced with "::".
+                value:
+                  site: example.com::subdir
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK. Response body contains the license that was detached.
+          headers:
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
     delete:
       tags:
         - license
