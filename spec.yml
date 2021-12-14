@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: |
     A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
-  version: 1.2.0
+  version: 1.3.0
   title: Jetpack Licensing API
   contact:
     email: partners@jetpack.com
@@ -194,6 +194,14 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/LicenseKey'
+        - name: disable_email
+          description: Disable customer cancellation email if a license is being moved between customer sites or a customer is upgraded to a more premium plan.
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+            example: 1
       security:
         - ApiKeyAuth: []
       responses:
