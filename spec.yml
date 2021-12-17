@@ -194,14 +194,14 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/LicenseKey'
-        - name: disable_email
-          description: Disable customer cancellation email if a license is being moved between customer sites or a customer is upgraded to a more premium plan.
+        - name: cancellation_email
+          description: Determine if we should send a cancellation email to the end-customer. It is considered good practice to only disable this email if a license is e.g. being moved from a staging site to a production site.
           in: query
           required: false
           schema:
             type: integer
-            default: 0
-            example: 1
+            default: 1
+            example: 0
       security:
         - ApiKeyAuth: []
       responses:
