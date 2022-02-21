@@ -258,6 +258,29 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 
+  /partner/product-families:
+    get:
+      tags:
+        - product-families
+      summary: Get all the available product families, their products, and prices.
+      operationId: getPartnerProductFamilies
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK. Response body contains product families with product prices.
+          headers:
+            X-Jetpack-Request-Id:
+              $ref: '#/components/headers/X-Jetpack-Request-Id'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductFamilyWithPrices'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
   /site-connection:
     post:
       tags:
@@ -355,6 +378,37 @@ components:
         slug:
           type: string
           example: "jetpack-backup-daily"
+
+    ProductFamilyWithPrices:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Jetpack Backup"
+        slug:
+          type: string
+          example: "jetpack-backup"
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductFamilyWithPricesProduct'
+            
+    ProductFamilyWithPricesProduct:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Jetpack Backup (Daily)"
+        slug:
+          type: string
+          example: "jetpack-backup-daily"
+        currency:
+          type: string
+          example: "usd"
+        amount:
+          type: number
+          format: float
+          example: 9.99
 
     Partner:
       type: object
