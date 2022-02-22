@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: |
     A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
-  version: 1.3.0
+  version: 1.4.0
   title: Jetpack Licensing API
   contact:
     email: partners@jetpack.com
@@ -223,7 +223,7 @@ paths:
     get:
       tags:
         - product-families
-      summary: Get all the available product families and their products.
+      summary: Get all of the available product families and their products.
       operationId: getProductFamilies
       responses:
         '200':
@@ -262,7 +262,7 @@ paths:
     get:
       tags:
         - product-families
-      summary: Get all the available product families, their products, and prices.
+      summary: Get all of the product families, their products, and prices available to the authenticated partner.
       operationId: getPartnerProductFamilies
       security:
         - ApiKeyAuth: []
@@ -360,7 +360,7 @@ components:
       properties:
         name:
           type: string
-          example: "Jetpack Backup"
+          example: "Jetpack Packs"
         slug:
           type: string
           example: "jetpack-backup"
@@ -372,19 +372,23 @@ components:
     ProductFamilyProduct:
       type: object
       properties:
+        product_id:
+          type: integer
+          format: int64
+          example: 12345
         name:
           type: string
-          example: "Jetpack Backup (Daily)"
+          example: "Jetpack Complete"
         slug:
           type: string
-          example: "jetpack-backup-daily"
+          example: "jetpack-complete"
 
     ProductFamilyWithPrices:
       type: object
       properties:
         name:
           type: string
-          example: "Jetpack Backup"
+          example: "Jetpack Packs"
         slug:
           type: string
           example: "jetpack-backup"
@@ -396,12 +400,16 @@ components:
     ProductFamilyWithPricesProduct:
       type: object
       properties:
+        product_id:
+          type: integer
+          format: int64
+          example: 12345
         name:
           type: string
-          example: "Jetpack Backup (Daily)"
+          example: "Jetpack Complete"
         slug:
           type: string
-          example: "jetpack-backup-daily"
+          example: "jetpack-complete"
         currency:
           type: string
           example: "usd"
