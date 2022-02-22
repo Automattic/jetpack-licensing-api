@@ -363,7 +363,7 @@ components:
           example: "Jetpack Packs"
         slug:
           type: string
-          example: "jetpack-backup"
+          example: "jetpack-packs"
         products:
           type: array
           items:
@@ -391,7 +391,7 @@ components:
           example: "Jetpack Packs"
         slug:
           type: string
-          example: "jetpack-backup"
+          example: "jetpack-packs"
         products:
           type: array
           items:
