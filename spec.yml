@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: |
     A set of endpoints that are meant for Jetpack partners to manage licenses and connect sites.
-  version: 1.4.0
+  version: 1.4.1
   title: Jetpack Licensing API
   contact:
     email: partners@jetpack.com
@@ -417,6 +417,10 @@ components:
           type: number
           format: float
           example: 9.99
+        price_interval:
+          type: string
+          enum: ["month", "day"]
+          example: "month"
 
     Partner:
       type: object
