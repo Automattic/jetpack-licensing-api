@@ -127,7 +127,13 @@ paths:
       tags:
         - license
       summary: Attach a license to a site.
-      description: Attaching a license to a site means that the site will start benefitting from the Jetpack Product associated with the license.
+      description: |
+        Attaching a license to a site means that the site will begin to benefit from the Jetpack product associated with that license.
+        
+        Restrictions and limitations:
+        
+        - For hosting partners: To use this endpoint, you will need to be allowlisted in order to create and authorize users on a site. Since this bypasses our standard connection flow, there are business and user experience considerations to take into account. Please contact us if you require this functionality.
+        - For agencies: To use this endpoint, the agency's WordPress.com user must be a connected Jetpack user who is also an administrator on the site to which you are attaching the license.
       operationId: attachLicense
       parameters:
         - name: license_key
